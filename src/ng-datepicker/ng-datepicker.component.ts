@@ -27,6 +27,7 @@ export interface DatepickerOptions {
   displayFormat?: string; // default: 'MMM D[,] YYYY'
   barTitleFormat?: string; // default: 'MMMM YYYY'
   firstCalendarDay?: number; // 0 = Sunday (default), 1 = Monday, ..
+  placeholder: string;
 }
 
 @Component({
@@ -200,12 +201,18 @@ export class NgDatepickerComponent implements ControlValueAccessor, OnInit, OnCh
   }
 
   writeValue(val: Date) {
-    if (val) {
-      this.date = val;
-      this.innerValue = val;
-      this.init();
-      this.displayValue = format(this.innerValue, this.displayFormat);
-      this.barTitle = format(startOfMonth(val), this.barTitleFormat);
+    let initialValueIsEmpty = false;
+    if (!val) {
+      val = new Date();
+      initialValueIsEmpty = true;
+    }
+    this.date = val;
+    this.innerValue = val;
+    this.init();
+    this.barTitle = format(startOfMonth(val), this.barTitleFormat);
+    this.displayValue = format(this.innerValue, this.displayFormat);
+    if (initialValueIsEmpty && this.options.placeholder) {
+      this.displayValue = this.options.placeholder;
     }
   }
 

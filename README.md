@@ -49,6 +49,7 @@ options: DatepickerOptions = {
   displayFormat: 'MMM D[,] YYYY',
   barTitleFormat: 'MMMM YYYY',
   firstCalendarDay: 0; // 0 - Sunday, 1 - Monday
+  placeholder: 'Set Date';
 };
 ```
 
