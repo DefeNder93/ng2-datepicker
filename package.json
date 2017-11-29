@@ -91,6 +91,6 @@
   },
   "dependencies": {
     "date-fns": "^1.28.5",
-    "ngx-slimscroll": "^3.3.3"
+    "ngx-slimscroll": "3.3.3"
   }
 }
